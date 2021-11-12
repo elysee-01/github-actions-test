@@ -30,6 +30,9 @@ jobs:
       run: black .
     - name: List all file
       run: ls -la
+    - name: Run Coverage
+      run: |
+        if [ -f test.py ]; then coverage run -m pytest test.py; fi
     - name: coverage.py badge
       # You may pin to the exact commit or the version.
       # uses: tj-actions/coverage-badge-py@786077b81572723a796adaf34015dfaeea425c3b

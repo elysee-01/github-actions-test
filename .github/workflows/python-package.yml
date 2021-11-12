@@ -34,11 +34,11 @@ jobs:
       uses: codacy/codacy-coverage-reporter-action@v1.1.0
       with:
         # API project token to retrieve your remote Codacy configuration for the project being analyzed
-        # project-token: 54969dbab4044e0e926bcc37521c719d
+        project-token: 54969dbab4044e0e926bcc37521c719d
         # API account token to retrieve your remote Codacy configuration for the project being analyzed
-        api-token: 54969dbab4044e0e926bcc37521c719d
+        # api-token: 54969dbab4044e0e926bcc37521c719d
         # Optional comma separated list of coverage reports to send to Codacy
-        # coverage-reports: # optional, default is 
+        coverage-reports: cobertura.xml
     - name: coverage.py badge
       # You may pin to the exact commit or the version.
       # uses: tj-actions/coverage-badge-py@786077b81572723a796adaf34015dfaeea425c3b
@@ -48,3 +48,5 @@ jobs:
         output: coverage.svg
         # Overwrite existing.
         overwrite: true
+
+

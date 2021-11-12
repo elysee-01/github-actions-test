@@ -35,6 +35,7 @@ jobs:
     - name: Run Coverage
       run: |
         if [ -f test.py ]; then coverage run -m pytest test.py; fi
+        git add .
     - name: coverage.py badge
       uses: tj-actions/coverage-badge-py@v1.6
       with:

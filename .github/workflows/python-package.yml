@@ -28,6 +28,8 @@ jobs:
         if [ -f test.py ]; then pytest test.py; fi
     - name: Reformat Code
       run: black .
+    - name: List all file
+      run: ls -la
     - name: Codacy Coverage Reporter
       # You may pin to the exact commit or the version.
       # uses: codacy/codacy-coverage-reporter-action@31721d7c5d2357955879f3ecbae83bf199c16000
@@ -48,5 +50,3 @@ jobs:
         output: coverage.svg
         # Overwrite existing.
         overwrite: true
-    - name: List all file
-      run: ls -la

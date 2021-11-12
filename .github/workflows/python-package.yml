@@ -39,8 +39,11 @@ jobs:
     - name: coverage.py badge
       uses: tj-actions/coverage-badge-py@v1.6
       with:
-        output: coverage.svg
+        output: ./.github/coverage.svg
         overwrite: true
+    - name: Git Add
+      run: |
+        git add .
     - name: Push changes
       uses: actions-go/push@v1
       with:

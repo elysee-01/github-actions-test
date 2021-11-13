@@ -48,18 +48,15 @@ jobs:
     #  run: |
     #    if [ -f test.py ]; then coverage run -m pytest test.py; fi
 
-    - name: Coveralls Python
-      uses: AndreMiras/coveralls-python-action@v20201129
+      # GITHUB_TOKEN COVERALLS_REPO_TOKEN ${{ github.token }} ${{ secrets.GITHUB_TOKEN }} ${{ secret.GITHUB_TOKEN }}
+    - name: Coveralls GitHub Action
+      uses: coverallsapp/github-action@1.1.3
       with:
-        # The `GITHUB_TOKEN` or `COVERALLS_REPO_TOKEN`. # ${{ github.token }}
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        # Set to true if you are using parallel jobs, then use `parallel-finished: true` for the last action.
-        parallel: true
-        # Set to true for the last action when using `parallel: true`.
-        parallel-finished: true
-        # The name of a sub-directory in which the coverage files are to be found.
-        # base-path: # optional
-        # A description of the current job used in connection with parallel.
+        github-token: ${{ github.GITHUB_TOKEN }}
+        # Job flag name, e.g. "Unit", "Functional", or "Integration". Will be shown in the Coveralls UI.
         flag-name: run-${{ matrix.test_number }}
-        # Set to `true` to increase logger verbosity.
-        # debug: # optional
+        # Set to true if you are running parallel jobs, then use "parallel_finished: true" for the last action.
+        parallel: true
+        # Set to true for the last action when using "parallel: true".
+        parallel-finished: true
+        git-branch: main

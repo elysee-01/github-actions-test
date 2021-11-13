@@ -23,31 +23,43 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
         architecture: ${{ matrix.architecture }}
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Reformat Code
-      run: black .
+
     - name: Test with pytest
       run: |
         if [ -f test.py ]; then pytest test.py; fi
-    - name: Run Coverage
-      run: |
-        if [ -f test.py ]; then coverage run -m pytest test.py; fi
-        git add .
-    - name: coverage.py badge
-      uses: tj-actions/coverage-badge-py@v1.6
-      with:
-        output: ./.github/coverage.svg
-        overwrite: true
-    - name: Git Add
-      run: |
-        git add .
+
+    - name: Reformat Code
+      run: black .
+
     - name: Push changes
       uses: actions-go/push@v1
       with:
         author-email: elyseekevin49@gmail.com
         author-name: ELYSEE-01
         create-commit: true
-        commit-message: "Commit change"
+        commit-message: "Commit changes from the auto-formatting action"
+
+    #- name: Run Coverage
+    #  run: |
+    #    if [ -f test.py ]; then coverage run -m pytest test.py; fi
+
+    - name: Coveralls Python
+      uses: AndreMiras/coveralls-python-action@v20201129
+      with:
+        # The `GITHUB_TOKEN` or `COVERALLS_REPO_TOKEN`. # ${{ github.token }}
+        github-token: ${{ secrets.COVERALLS_REPO_TOKEN }}
+        # Set to true if you are using parallel jobs, then use `parallel-finished: true` for the last action.
+        parallel: true
+        # Set to true for the last action when using `parallel: true`.
+        parallel-finished: true
+        # The name of a sub-directory in which the coverage files are to be found.
+        # base-path: # optional
+        # A description of the current job used in connection with parallel.
+        flag-name: run-${{ matrix.test_number }}
+        # Set to `true` to increase logger verbosity.
+        # debug: # optional

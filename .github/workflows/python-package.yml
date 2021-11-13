@@ -51,8 +51,8 @@ jobs:
     - name: Coveralls Python
       uses: AndreMiras/coveralls-python-action@v20201129
       with:
-        # The `GITHUB_TOKEN` or `COVERALLS_REPO_TOKEN`. # ${{ secrets.COVERALLS_REPO_TOKEN }}
-        github-token: ${{ github.token }}
+        # The `GITHUB_TOKEN` or `COVERALLS_REPO_TOKEN`. # ${{ github.token }}
+        github-token: ${{ secret.COVERALLS_REPO_TOKEN }}
         # Set to true if you are using parallel jobs, then use `parallel-finished: true` for the last action.
         parallel: true
         # Set to true for the last action when using `parallel: true`.

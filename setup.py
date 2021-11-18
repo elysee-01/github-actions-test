@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name="github_action_test",
-    packages=["github_action_test"],
+    packages=["."],
     version="0.1.0",
     license="MIT",
     description="GitHub Action workflow test",

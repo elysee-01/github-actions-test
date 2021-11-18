@@ -43,9 +43,3 @@ jobs:
         author-name: ELYSEE-01
         create-commit: true
         commit-message: "Commit changes from the auto-formatting action"
-
-    #- name: Run Coverage
-    #  run: |
-    #    if [ -f test.py ]; then coverage run -m pytest test.py; fi
-
-      # GITHUB_TOKEN COVERALLS_REPO_TOKEN ${{ github.token }} ${{ secrets.GITHUB_TOKEN }} ${{ secret.GITHUB_TOKEN }}
